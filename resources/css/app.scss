@@ -1,0 +1,435 @@
+@import "scroll";
+
+@import "helpers";
+
+body {
+    font-size: 16px;
+}
+
+.ps__thumb-y {
+    background-color: $main_color !important;
+}
+
+.center {
+    text-align: center;
+}
+
+
+.modalOverflow {
+    background-color: $main_color_modal_overflow;
+    display: none;
+    opacity: .9;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+}
+
+.modalOverflow.show {
+    display: block;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.34);
+    border-radius: 5px;
+    width: 750px;
+    max-width: 100%;
+    height: 550px;
+    display: none;
+    background-color: white;
+}
+
+.modal.show {
+    display: block;
+}
+
+.orderButton {
+    padding: 15px 25px;
+    border-radius: 20px;
+    background-color: $main_color;
+    color: white;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    transition: .2s;
+    cursor: pointer;
+    &:hover {
+        opacity: .9;
+    }
+}
+
+
+.header {
+    $header_padding_left_right: 25px;
+
+    &__row--first{
+        background-color: #272525;
+        display: flex;
+        justify-content: space-between;
+        color: #c6c8c9;
+        padding:  15px $header_padding_left_right;
+        font-size: 14px;
+
+        .contactHeader {
+            display: flex;
+
+            &__icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $main_color;
+                i {
+                    font-size: 17px;
+                }
+            }
+
+            &__text {
+                margin-left: 5px;
+            }
+        }
+
+    }
+
+
+    &__row--second {
+        padding: 4px $header_padding_left_right;
+
+
+        .headerNav{
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+            &__left {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+
+            &__logo {
+                max-width: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img {
+                    max-width: 100%;
+                }
+            }
+
+
+            .menu {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                li {
+                    list-style: none;
+                }
+
+                &__first {
+                    cursor: pointer;
+                    margin: auto 25px;
+                    position: relative;
+
+                    span {
+
+                        transition: .2s;
+
+                    }
+
+                    &:hover {
+                        span {
+                            opacity: .9;
+                            color: $main_color;
+                        }
+
+                        ul {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+
+                            li:nth-child(3) ul, li:nth-child(3) span {
+                                position: relative;
+                                right: 25px;
+                            }
+                        }
+                    }
+
+                    ul {
+                        display: none;
+                    }
+
+                    ul.menu__firstUl {
+
+                        &--withSub {
+                            min-width: 950px;
+                        }
+                        background-color: white;
+                        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+                        min-width: 350px;
+                        overflow: hidden;
+                        position: absolute;
+                        z-index: 1231;
+                        top: 100%;
+                        left: 0;
+                        padding: 7px;
+                        border-radius: 4px;
+
+
+
+                        span {
+                            font-weight: bold;
+                            color: #444;
+                        }
+
+                        ul,li {
+                            padding: 0;
+                        }
+
+                        ul {
+                            display: block;
+                            margin-top: 15px;
+                        }
+
+                         > li {
+                            margin: 10px 25px;
+                        }
+
+                        ul > li {
+                            margin: 10px auto;
+                        }
+
+                        a {
+                            color: #777;
+                            &:hover {
+                                color: #000;
+
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
+
+
+}
+
+
+.title {
+    color: #313c58;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    font-size: 3rem;
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 55%;
+        top: 115%;
+        left: 0;
+        right: 0;
+        border-bottom: 4px solid $main_color;
+        text-align: center;
+        margin: auto;
+    }
+
+}
+
+
+$slider_padding_left: 45px;
+
+.slider {
+
+    color: #444;
+
+    width: 100%;
+    height: 605px;
+    position: relative;
+    &__title {
+
+        margin-top: 15px;
+        font-weight: 700;
+
+        &Cont {
+            width: 100%;
+            text-align: center;
+        }
+
+
+
+    }
+
+    &__content {
+        display: flex;
+        justify-content: flex-start;
+        padding: 15px $slider_padding_left;
+
+    }
+
+    &__menu {
+
+        &Cont {
+
+        }
+
+        &Button {
+            display: block;
+            padding: 12px 75px;
+            text-align: center;
+
+
+            border-radius: 30px;
+            margin: 10px auto;
+
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: .25s;
+            outline: none;
+            background-color: white;
+            color: $main_color;
+            border: 1px solid $main_color;
+
+            &-active {
+                background-color: $main_color !important;
+                color: white;
+            }
+
+            &:hover {
+                opacity: .9;
+                background-color: rgba(0, 136, 255, 0.07);
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+
+    .slide {
+        display: none;
+
+        margin-left: 55px;
+
+
+
+        &__overflow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            background-repeat: no-repeat;
+
+            &-animate {
+                animation-duration: .4s;
+                animation-name: slidein;
+            }
+
+
+        }
+
+        &-show {
+            display: block;
+        }
+
+        &__textHeader {
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+
+        &__text {
+            margin: 15px auto;
+            &Cont {
+                max-height: 250px;
+                overflow-y: hidden;
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 550px;
+                position: relative;
+                padding-left: 25px;
+            }
+        }
+
+        &__orderButton {
+
+            margin-top: 15px;
+            padding-left: 35px;
+            padding-right: 35px;
+        }
+
+        &__bottom {
+            position: absolute;
+            left: $slider_padding_left;
+            bottom: 35px;
+
+
+            &Row {
+                display: flex;
+            }
+
+            &LastPrice {
+                font-size: 1.4rem;
+                text-decoration: line-through;
+                font-weight: 700;
+            }
+
+            &Price {
+                font-size: 2.4rem;
+                font-weight: 700;
+            }
+
+            &Comment {
+                margin-left: 115px;
+            }
+
+
+
+        }
+
+    }
+
+
+}
+
+//
+//.slide__overflow-animate {
+//    animation-duration: 3s;
+//    animation-name: slidein;
+//}
+
+
+@keyframes slidein {
+    from {
+
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+
+    }
+}

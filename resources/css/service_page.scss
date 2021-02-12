@@ -1,0 +1,161 @@
+
+@import "helpers";
+
+
+.promotes__blockCont {
+    display: flex;
+    justify-content: center;
+
+    .promoteBlock {
+        width: 20%;
+        margin: 2%;
+    }
+
+}
+
+.promoteBlock {
+    $promote_padding: 25px;
+
+    border-radius: 5px;
+    border: 1px solid $main_color;
+
+    text-align: center;
+
+    background-color: rgba(145, 249, 209, 0.07);
+
+    &__header {
+        padding: $promote_padding;
+        font-weight: 700;
+        font-size: 1.8rem;
+    }
+
+    &__text {
+        padding: $promote_padding;
+        border-top: 1px solid $main_color;
+        border-bottom: 1px solid $main_color;
+
+    }
+
+    &__footer {
+        padding: $promote_padding;
+    }
+
+    &__price {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    &__priceInfo {
+        color: #777;
+        font-size: .8rem;
+    }
+
+    &__orderButton {
+        margin-top: 15px;
+        padding: 15px 25%;
+    }
+
+}
+
+
+
+
+
+.sliderRow {
+    position: relative;
+    min-height: 80vh;
+    background-color: #f4f7fc;
+    padding: 5px 35px;
+    background-image: url("/images/sliderRow/slider_row_bg.jpg");
+    background-position: center;
+    background-size: cover;
+
+
+    &__menu {
+        &Cont {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        min-width: 150px;
+        margin: 0 15px;
+        flex: 1;
+
+        border-radius: 25px;
+        border: 1px solid $main_color;
+        text-align: center;
+        padding: 15px;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: .2s;
+        cursor: pointer;
+        &--active {
+            background-color: $main_color;
+            color: white;
+        }
+        &:hover {
+            opacity: .9;
+            background-color: $main_color;
+        }
+    }
+
+
+    &__slide {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 45px 25px;
+
+        > * {
+            margin: 0 25px;
+        }
+
+        &--active {
+            display: flex;
+        }
+
+        &Text{
+            &Cont {
+
+            }
+
+            &Title {
+                font-weight: 700;
+                font-size: 1.5rem;
+            }
+        }
+
+
+        &--animate {
+            animation: showSliderRowSlide .25s ease-in;
+        }
+
+        @keyframes showSliderRowSlide {
+            0% {
+                opacity: 0;
+                //transform: translateX(-15px);
+            }
+            100% {
+                opacity: 1;
+                //transform: translateX(0);
+            }
+        }
+    }
+
+}
+
+
+
+.article {
+    padding: 25px 2.5%;
+
+    &__header {
+        font-size: 8rem;
+        color: rgba(233, 233, 233, 0.47);
+        font-weight: 700;
+    }
+}
+
+
+
+
