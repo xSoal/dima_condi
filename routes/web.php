@@ -21,7 +21,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\ServicePageController::class, 'index'])->name('home_page');
 
 
-Route::get('/admin', [\App\Http\Controllers\Admin\AdminPageController::class, 'index'])->name('admin_page');
+//Route::get('/admin', [\App\Http\Controllers\Admin\AdminPageController::class, 'index'])->name('admin_page');
+
+
+Route::get('/admin', function (){
+    return view('admin.index');
+});
+
+Route::get('/admin/{any}', function (){
+    return view('admin.index');
+})->where('any', '.{0,}');
+
 
 Auth::routes();
 

@@ -1,0 +1,22 @@
+
+
+.ant-btn-primary {
+    background-color: #318843;
+    border-color: #33884b;
+}
+
+.ant-input:hover,
+.ant-input:focus {
+    border-color: #32884d;
+}
+
+
+.ant-input:focus {
+    box-shadow: 0 0 0 2px rgb(51 136 75 / 7%);
+}
+
+
+.ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
+    border-color: #33884e;
+    border-right-width: 1px !important;
+}

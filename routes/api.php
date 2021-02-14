@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -30,3 +32,24 @@ Route::group([
     Route::post('me', [\App\Http\Controllers\AuthController::class, 'me']);
 
 });
+
+
+Route::group([
+    'middleware' => 'auth:api',
+], function ($router) {
+    Route::get('/service_categories', function(){
+        $service_categories = ServiceCategory::all();
+        return response()->json($service_categories);
+    });
+
+});
+
+
+
+
+
+
+
+Route::get('/service', [\App\Http\Controllers\Admin\ServiceController::class, 'index']);
+Route::put('/service', [\App\Http\Controllers\Admin\ServiceController::class, 'add']);
+Route::delete('/service/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'delete']);
