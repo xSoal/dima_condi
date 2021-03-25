@@ -33,6 +33,13 @@
                         to: {
                             name: 'dashboard'
                         }
+                    },
+                    {
+                        icon: "unordered-list",
+                        text: 'файлы',
+                        to: {
+                            name: 'files'
+                        }
                     }
                 ]
             }

@@ -39,8 +39,8 @@
             async handleSubmit(e) {
                 const userData = await this.$API.tryAuth(this.formData.email, this.formData.password);
                 if(userData.email){
-                    // await this.$router.push({ name: 'dashboard' });
-                    window.location.href = '/admin';
+                    await this.$router.push({ name: 'dashboard' });
+                    // window.location.href = '/admin';
                 } else {
                     this.$notification['error']({
                         message: 'Ошибка при авторизации'

@@ -1,26 +1,28 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import api from '../api';
+import API from '../api';
 import pages from './pages'
+import files from './files'
+import pages__constructor from "./pages__constructor";
 
 
-
-const API = new api();
 Vue.prototype.$API = API;
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        test: 1
+        globalLoading: false,
     },
     actions: {
 
     },
 
     modules: {
-        pages
+        pages,
+        files,
+        pages__constructor
     }
 });
 

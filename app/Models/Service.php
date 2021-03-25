@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \App\Models\Slider as Slider;
 
 class Service extends Model
 {
@@ -20,11 +22,39 @@ class Service extends Model
     ];
 
 
+    protected $with = [
+        "slider", "serviceBlock"
+    ];
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::deleted(function ($service) {
+            return $service->slider()->delete();
+        });
+
+    }
+
 
 
     public function serviceCategories(){
         return $this->belongsTo(ServiceCategory::class);
     }
 
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    public function slider(){
+        return $this->hasOne(Slider::class);
+    }
+
+    public function serviceBlock(){
+        return $this->hasOne(ServiceBlock::class);
+    }
 
 }

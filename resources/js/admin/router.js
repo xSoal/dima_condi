@@ -5,6 +5,9 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Login from "./components/Login/Login";
 import Register from './components/Register/Register'
 import Pages from "./components/Dashboard/Pages/Pages";
+import Files from "./components/Dashboard/Files/Files";
+import Service__Categories from "./components/Dashboard/Pages/Service__Categories";
+import Services from "./components/Dashboard/Pages/Services";
 
 Vue.use(VueRouter);
 
@@ -17,7 +20,7 @@ const routes = [
         meta: {
             layout: "dashboard",
             needAuth: true,
-            dashboardHeaderText: 'Админка'
+            dashboardHeaderText: 'Админка Главная'
         }
     },
     {
@@ -27,8 +30,42 @@ const routes = [
         meta: {
             layout: "dashboard",
             needAuth: true,
-            dashboardHeaderText: 'Страницы'
-        }
+            dashboardHeaderText: 'Категории услуг'
+        },
+        children: [
+            {
+                path: ":id",
+                component: Service__Categories,
+
+                meta: {
+                    layout: "dashboard",
+                    needAuth: true,
+                    dashboardHeaderText: 'Услуги'
+                },
+                children: [
+                    {
+                        path: ":serviceId",
+                        component: Services,
+
+                        meta: {
+                            layout: "dashboard",
+                            needAuth: true,
+                            dashboardHeaderText: 'Данные услуги'
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        path: '/admin/files',
+        component: Files,
+        name: 'files',
+        meta: {
+            layout: "dashboard",
+            needAuth: true,
+            dashboardHeaderText: 'Загрузчик файлов'
+        },
     },
     {
         path: '/admin/login',
@@ -64,7 +101,7 @@ router.beforeEach((to, from, next) => {
     const needAuth = to.matched.some(route => route.meta.needAuth);
 
     if( !isAuth && needAuth ){
-        next('admin/login');
+        next('/admin/login');
     } else {
         next();
     }

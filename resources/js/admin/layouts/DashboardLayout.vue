@@ -3,7 +3,6 @@
         <LeftMenu/>
         <div class="dashBoard__contentOverflow">
             <DashboardHeader
-                v-if="dashboardHeaderText"
                 :dashboardHeaderText="dashboardHeaderText"
             />
             <div class="dashboard__content">
@@ -27,13 +26,15 @@
         },
         data() {
             return {
-                dashboardHeaderText: this.$route.meta.dashboardHeaderText ?? false,
+
             }
         },
-        mounted() {
-            console.log(this.$API)
-        },
-        methods: {}
+        methods: {},
+        computed: {
+            dashboardHeaderText(){
+                return this.$route.meta.dashboardHeaderText ?? 'Админка';
+            }
+        }
     }
 </script>
 

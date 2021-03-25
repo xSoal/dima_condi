@@ -1,16 +1,8 @@
     <template>
         <div>
-            <div>Услуги</div>
-            <div class="servicePages">
-                <div class="servicePage"
-                    v-for="s in serviceCategories"
-                     :key="s.id"
-                     @click.prevent="selectCategory(s.id)"
-                     :class="{'chosen' : selectedCategoryId === s.id}"
-                >
-                    {{s.category_name}}
-                </div>
-            </div>
+            <Service__Categories
+                :serviceCategories="serviceCategories"
+            />
             <addServiceBlock
                 :selectedCategoryId="selectedCategoryId"
                 v-if="selectedCategoryId"
@@ -25,9 +17,11 @@
         import {mapActions, mapState} from 'vuex';
         import addServiceBlock from "./addServiceBlock";
         import Services from './Services';
+        import Service__Categories from "./Service__Categories";
         export default {
             name: "Pages",
             components: {
+                Service__Categories,
                 addServiceBlock,
                 Services
             },
@@ -41,7 +35,6 @@
                     serviceCategories: state => state.pages.serviceCategories,
                     services: state => state.pages.services,
                     selectedCategoryId: state => state.pages.selectedCategoryId
-
                 })
             },
             methods: {
@@ -55,10 +48,6 @@
                     'getServicesOfCategory'
                 ]),
 
-                selectCategory(id){
-                    this.$store.state.pages.selectedCategoryId = id;;
-                    this.getServicesOfCategory();
-                }
             },
             mounted() {
                 this.getPages();
@@ -69,34 +58,5 @@
 
     <style>
 
-        .servicePages {
-            display: flex;
-            justify-content: flex-start;
-            border-bottom: 1px solid #e7e7e7;
-            padding: 10px;
-            padding-bottom: 5px;
-        }
 
-        .servicePage {
-            cursor: pointer;
-            position: relative;
-            padding-bottom: 10px;
-            top:6px;
-            border: 1px solid transparent;
-            transition: .14s;
-
-        }
-
-        .servicePage:hover {
-            border-bottom: 1px solid;
-        }
-
-        .servicePage.chosen {
-            border-bottom: 1px solid;
-        }
-
-        .servicePage  + .servicePage{
-
-            margin-left: 25px;
-        }
     </style>

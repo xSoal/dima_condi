@@ -7,24 +7,20 @@
         <transition name="slide-fade">
             <div class="services__form" v-if="show">
                 <a-form-model class="formCont" :model="formData" @submit="handleSubmit" @submit.native.prevent>
-                    <a-form-model-item
-                        :validate-status="errors.name ? 'error' : '' "
-                        :help="errors.name"
-                    >
-                        <a-input v-model="formData.name" placeholder="Название услуги" type="text">
-                            <a-icon slot="prefix" type="plus" style="color:rgba(0,0,0,.25)"
-                                    validate-status="error"
-                            />
-                        </a-input>
-                    </a-form-model-item>
-                    <a-form-model-item
-                        :validate-status="errors.slug ? 'error' : '' "
-                        :help="errors.slug"
-                    >
-                        <a-input v-model="formData.slug" placeholder="Ссылка" type="text">
-                            <a-icon slot="prefix" type="plus" style="color:rgba(0,0,0,.25)" />
-                        </a-input>
-                    </a-form-model-item>
+                    <FormInput
+                        :error="errors.name"
+                        placeholder="Названия услуги"
+                        type="text"
+                        iconType="plus"
+                        v-model="formData.name"
+                    />
+                    <FormInput
+                        :error="errors.slug"
+                        placeholder="Ссылка"
+                        type="text"
+                        iconType="plus"
+                        v-model="formData.slug"
+                    />
                     <a-form-model-item>
                         <a-button
                             type="primary"
@@ -44,11 +40,15 @@
 
 <script>
     import {mapActions} from 'vuex';
+    import FormInput from "../../../reusable_components/FormInput";
     export default {
         name: "addServiceBlock",
         props: [
             "selectedCategoryId"
         ],
+        components: {
+            FormInput
+        },
         data(){
             return {
                 show: false,
@@ -66,22 +66,18 @@
                 'addService'
             ]),
             async handleSubmit(){
+
                 const request = await this.addService({
-                    catId: this.selectedCategoryId,
                     name: this.formData.name,
                     slug: this.formData.slug
                 });
 
                 if( request.error ){
-
                     this.errors = request.data.errors;
 
                     this.$notification['error']({
                         message: request.data.message ?? 'Ошибка'
                     });
-                } else {
-                    this.formData.name = '';
-                    this.formData.slug = '';
                 }
 
             }

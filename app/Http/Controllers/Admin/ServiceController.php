@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 
@@ -49,9 +50,48 @@ class ServiceController extends Controller
 
     }
 
-    public function delete(Request $request, $service_id = 0){
-        $service = Service::where('id', $service_id)->delete();
+    public function update(Request $request, $service_id = 0){
+        $service = Service::where('id', $service_id)->first();
+
+
+        if(!$service){
+            return response()->json([], 404);
+        }
+
+
+        $request->validate([
+            "category_name" => "required|string",
+            "slug" => [
+                "required",
+                Rule::unique('services')->ignore($service->id),
+                function ($attribute, $value, $fail){
+
+                    if( stripos  ($value, " ") ){
+                        $fail("В $attribute не должно быть пробелов");
+                    }
+
+                }
+            ],
+            "title" => "required|string",
+            "description" => "required|string",
+            "text" => "required|string"
+        ]);
+
+        $service->category_name = $request->input("category_name");
+        $service->slug = $request->input("slug");
+        $service->title = $request->input("title");
+        $service->description = $request->input("description");
+        $service->text = $request->input("text");
+
+        $service->save();
         return response()->json("", 200);
+    }
+
+    public function delete(Request $request, $service_id = 0){
+        $service = Service::find($service_id);
+        $service->delete();
+
+        return response()->json("ok", 200);
     }
 
 }

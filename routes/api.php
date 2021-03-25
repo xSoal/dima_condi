@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SliderController;
 use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,8 +49,17 @@ Route::group([
 
 
 
-
-
 Route::get('/service', [\App\Http\Controllers\Admin\ServiceController::class, 'index']);
 Route::put('/service', [\App\Http\Controllers\Admin\ServiceController::class, 'add']);
 Route::delete('/service/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'delete']);
+Route::put('/service/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'update']);
+
+
+Route::post('/images', [\App\Http\Controllers\AttachmentController::class, 'store']);
+Route::get('/images', [\App\Http\Controllers\AttachmentController::class, 'file_list']);
+Route::delete('/images/{file_id}', [\App\Http\Controllers\AttachmentController::class, 'delete']);
+
+
+Route::resource('/slider', SliderController::class);
+Route::post('/slider_deactivate/{slider_id}', [SliderController::class, 'deactivate']);
+Route::post('/slider_activate/{slider_id}', [SliderController::class, 'activate']);
