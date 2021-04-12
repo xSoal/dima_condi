@@ -4,6 +4,9 @@ use App\Http\Controllers\Controller as Controller;
 
 //echo $slider_data;
 
+
+$slider_data = $service->slider;
+
 $slider_json_data = json_decode($slider_data->json_data);
 $images_data = [];
 foreach ($slider_json_data as $data) {
@@ -29,7 +32,10 @@ foreach ($slider_json_data as $data) {
     <div class="slider__content">
         <div class="slider__menuCont">
             @foreach($slider_json_data as $key => $data)
-                <button class="slider__menuButton {{ $key === 0 ? 'slider__menuButton-active' : ''  }} " data-key="{{$key}}">
+                <button class="slider__menuButton
+                    {{ $key === 0 ? 'slider__menuButton-active' : ''  }} "
+                        data-image-url="{{$data->image}}"
+                >
                     {{$data->title_left}}
                 </button>
             @endforeach

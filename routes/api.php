@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ServiceBlock__BlockController;
+use App\Http\Controllers\Admin\ServiceFaqUnswerController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
@@ -63,3 +65,35 @@ Route::delete('/images/{file_id}', [\App\Http\Controllers\AttachmentController::
 Route::resource('/slider', SliderController::class);
 Route::post('/slider_deactivate/{slider_id}', [SliderController::class, 'deactivate']);
 Route::post('/slider_activate/{slider_id}', [SliderController::class, 'activate']);
+
+Route::get('/service_block_all', [\App\Http\Controllers\Admin\ServiceBlockController::class, 'index']);
+Route::get('/service_block/{serviceBlockId}', [\App\Http\Controllers\Admin\ServiceBlockController::class, 'indexOne']);
+Route::get('/service_block_by_service/{serviceId}', [\App\Http\Controllers\Admin\ServiceBlockController::class, 'indexOneByService']);
+
+Route::post('/service_block_set_active_status/{serviceBlockId}', [\App\Http\Controllers\Admin\ServiceBlockController::class, 'setActiveStatus']);
+
+Route::put('/service_block/{serviceBlockId}', [\App\Http\Controllers\Admin\ServiceBlockController::class, 'create']);
+Route::delete('/service_block/{serviceBlockId}', [\App\Http\Controllers\Admin\ServiceBlockController::class, 'delete']);
+
+//ServiceBlock__BlockController
+Route::delete('/service_block_block/{serviceBlocBlockId}', [ServiceBlock__BlockController::class, 'delete']);
+Route::put('/service_block_block', [ServiceBlock__BlockController::class, 'create']);
+Route::post('/service_block_block', [ServiceBlock__BlockController::class, 'save']);
+
+
+
+Route::get('/service_faq/{service_id}', [ServiceFaqUnswerController::class, 'index']);
+Route::delete('/service_faq/{service_id}', [ServiceFaqUnswerController::class, 'delete']);
+
+Route::put('/service_faq/{faq_id}', [ServiceFaqUnswerController::class, 'create']);
+
+
+
+
+Route::get('/service_table/{service_id}', [\App\Http\Controllers\ServiceTableController::class, 'index']);
+Route::put('/service_table', [\App\Http\Controllers\ServiceTableController::class, 'create']);
+Route::delete('/service_table/{service_id}', [\App\Http\Controllers\ServiceTableController::class, 'delete']);
+Route::post('/service_table/', [\App\Http\Controllers\ServiceTableController::class, 'edit']);
+
+
+

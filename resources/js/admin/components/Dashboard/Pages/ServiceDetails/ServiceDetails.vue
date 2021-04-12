@@ -15,6 +15,16 @@
                 <a-tab-pane key="2" tab="Главный слайдер сверху">
                     <ServiceDetails__Constructor__Slider/>
                 </a-tab-pane>
+                <a-tab-pane key="3" tab="Блоки сервиса">
+                    <ServiceBlocks/>
+                </a-tab-pane>
+                <a-tab-pane key="4" tab="FAQ">
+                    <ServiceFAQ/>
+                </a-tab-pane>
+                <a-tab-pane key="5" tab="Таблицы">
+                    <ServiceTable/>
+                </a-tab-pane>
+
             </a-tabs>
         </template>
 
@@ -27,9 +37,12 @@
 <script>
     import ServiceDetails__Header from "./ServiceDetails__Header";
     import ServiceDetails__TabMain from "./ServiceDetails__TabMain";
-    import ServiceDetails__Constructor from "./Constructor/ServiceDetails__Constructor";
+
     import {mapState} from "vuex";
     import ServiceDetails__Constructor__Slider from "./Constructor/ServiceDetails__Constructor__Slider";
+    import ServiceBlocks from "./Constructor/ServiceBlocks/ServiceBlocks";
+    import ServiceFAQ from "./Constructor/ServiceFAQ/ServiceFAQ";
+    import ServiceTable from "./Constructor/ServiceTable/ServiceTable";
 
     export default {
         name: "ServiceDetails",
@@ -41,8 +54,10 @@
         components: {
             ServiceDetails__Header,
             ServiceDetails__TabMain,
-            ServiceDetails__Constructor,
-            ServiceDetails__Constructor__Slider
+            ServiceDetails__Constructor__Slider,
+            ServiceBlocks,
+            ServiceFAQ,
+            ServiceTable
         },
         computed: {
             ...mapState({

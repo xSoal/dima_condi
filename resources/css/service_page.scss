@@ -1,6 +1,11 @@
 
 @import "helpers";
 
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 
 .promotes__blockCont {
     display: flex;

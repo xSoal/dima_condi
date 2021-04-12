@@ -74,7 +74,8 @@ class ServiceController extends Controller
             ],
             "title" => "required|string",
             "description" => "required|string",
-            "text" => "required|string"
+            "text" => "required|string",
+            "is_main" => "required"
         ]);
 
         $service->category_name = $request->input("category_name");
@@ -82,6 +83,7 @@ class ServiceController extends Controller
         $service->title = $request->input("title");
         $service->description = $request->input("description");
         $service->text = $request->input("text");
+        $service->is_main = $request->input("is_main");
 
         $service->save();
         return response()->json("", 200);

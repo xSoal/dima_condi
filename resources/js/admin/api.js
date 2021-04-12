@@ -65,12 +65,12 @@ class API_CLASS {
             window.localStorage.setItem('JWT', JSON.stringify(storageData));
 
 
-
-            return data.user;
+            return {
+                ...data.user,
+            };
 
         } catch (err) {
-            console.log(err);
-            return false;
+            return err;
         }
 
     }

@@ -8,7 +8,6 @@
     export default {
         name: "login-layout",
         mounted() {
-            console.log( this.$API )
         },
         methods: {
 

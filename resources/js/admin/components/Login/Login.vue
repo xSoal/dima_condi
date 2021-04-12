@@ -1,6 +1,9 @@
 <template>
     <div class="login form">
         <a-form-model :model="formData" @submit="handleSubmit" @submit.native.prevent>
+
+            {{ formData.res }}
+            <br>
             <a-form-model-item>
                 <a-input v-model="formData.email" placeholder="Email" type="text">
                     <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
@@ -15,7 +18,7 @@
                 <a-button
                     type="primary"
                     html-type="submit"
-                    :disabled=" formData.user === '' || formData.password === '' "
+                    :disabled=" formData.email === '' || formData.password === '' "
                 >
                     Log in
                 </a-button>
@@ -32,6 +35,7 @@
                 formData: {
                     email: '',
                     password: '',
+                    res: ''
                 },
             };
         },
@@ -46,6 +50,7 @@
                         message: 'Ошибка при авторизации'
                     });
                 }
+                this.formData.res = userData
             },
         },
     }

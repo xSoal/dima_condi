@@ -5,7 +5,9 @@ import API from '../api';
 import pages from './pages'
 import files from './files'
 import pages__constructor from "./pages__constructor";
-
+import serviceBlocks from "./serviceBlocks";
+import serviceFAQ from './serviceFAQ';
+import serviceTables from './serviceTables';
 
 Vue.prototype.$API = API;
 
@@ -22,7 +24,10 @@ const store = new Vuex.Store({
     modules: {
         pages,
         files,
-        pages__constructor
+        pages__constructor,
+        serviceBlocks,
+        serviceFAQ,
+        serviceTables
     }
 });
 

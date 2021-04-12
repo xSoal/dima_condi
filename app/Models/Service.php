@@ -18,12 +18,13 @@ class Service extends Model
         'category_name',
         'slug',
         'title',
-        'description'
+        'description',
+        'id'
     ];
 
 
     protected $with = [
-        "slider", "serviceBlock"
+        "slider",
     ];
 
 
@@ -33,6 +34,10 @@ class Service extends Model
 
         self::deleted(function ($service) {
             return $service->slider()->delete();
+        });
+
+        self::deleted(function ($service) {
+            return $service->serviceBlock()->delete();
         });
 
     }
@@ -55,6 +60,14 @@ class Service extends Model
 
     public function serviceBlock(){
         return $this->hasOne(ServiceBlock::class);
+    }
+
+    public function ServiceFaqUnswer(){
+        return $this->hasMany(ServiceFaqUnswer::class);
+    }
+
+    public function serviceTables(){
+        return $this->hasMany(ServiceTable::class);
     }
 
 }

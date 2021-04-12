@@ -2,6 +2,17 @@
     <div>
 
         <a-form-model class="formCont" :model="formData" @submit="handleSubmit" @submit.native.prevent>
+
+                <div>
+                    <a-checkbox
+                        :checked="formData.is_main === 1"
+                        @change="clickIsMain"
+                    >
+                        Главная страница
+                    </a-checkbox>
+                </div>
+
+
             <FormInput
                 :error="errors.category_name"
                 placeholder="Названия услуги"
@@ -93,7 +104,8 @@
                     slug: this.data.slug,
                     title: this.data.title,
                     description: this.data.description,
-                    text: this.data.text
+                    text: this.data.text,
+                    is_main: this.data.is_main
                 }
             }
         },
@@ -123,18 +135,13 @@
             ...mapActions([
                 "updateService"
             ]),
+            clickIsMain(e){
+                this.formData.is_main = e.target.checked ? 1 : 0;
+                this.handleSubmit();
+            },
             async handleSubmit() {
 
-                // const request = await this.updateService({
-                //     category_name: this.formData.category_name,
-                //     slug: this.formData.slug,
-                //     title: this.formData.title,
-                //     description: this.formData.description,
-                //     text: this.formData.text
-                // });
-
                 const request = await this.updateService(this.formData);
-
 
                 if (request.error) {
                     this.errors = request.data.errors;

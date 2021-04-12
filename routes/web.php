@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 //    return view('service_page');
 //});
 
-
+Route::get('/contact', [\App\Http\Controllers\ServicePageController::class, 'contact']);
 Route::get('/', [\App\Http\Controllers\ServicePageController::class, 'index'])->name('home_page');
-
+Route::get('/{service_slug}', [\App\Http\Controllers\ServicePageController::class, 'index'])->name('service_page');
 
 //Route::get('/admin', [\App\Http\Controllers\Admin\AdminPageController::class, 'index'])->name('admin_page');
 

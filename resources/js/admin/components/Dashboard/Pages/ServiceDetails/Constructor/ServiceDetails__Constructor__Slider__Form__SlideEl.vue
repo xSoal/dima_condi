@@ -59,6 +59,8 @@
             />
 
 
+            {{localData}}
+
 
             <TextArea__Editor
                 v-model="localData.text"

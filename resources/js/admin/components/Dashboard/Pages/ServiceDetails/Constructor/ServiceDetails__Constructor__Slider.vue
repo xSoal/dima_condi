@@ -62,7 +62,8 @@
                         image_small: "",
                         image: "",
                         last_price: 3000,
-                        price: 1500
+                        price: 1500,
+                        text: "Текст слайда"
                     }])
                 }
             },
