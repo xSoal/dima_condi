@@ -10,6 +10,7 @@ body {
 .promotes__blockCont {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 
     .promoteBlock {
         width: 20%;
@@ -19,7 +20,7 @@ body {
 }
 
 .promoteBlock {
-    $promote_padding: 25px;
+    $promote_padding: 25px 35px 20px 20px;
 
     border-radius: 5px;
     border: 1px solid $main_color;
@@ -31,7 +32,9 @@ body {
     &__header {
         padding: $promote_padding;
         font-weight: 700;
-        font-size: 1.8rem;
+        font-size: 1.7rem;
+        overflow: hidden;
+
     }
 
     &__text {
@@ -154,13 +157,95 @@ body {
 .article {
     padding: 25px 2.5%;
 
+    article {
+        margin-top: 35px;
+    }
+
     &__header {
         font-size: 8rem;
-        color: rgba(233, 233, 233, 0.47);
+        color: rgb(230 230 230);
         font-weight: 700;
+        line-height: 8rem;
+    }
+
+}
+
+.faq {
+    margin-top: 65px;
+
+
+    &Cont {
+        margin-top: 25px;
+        background-image: none;
+        background-color: transparent;
+    }
+
+    .sliderRow__menu {
+       flex: 0  ;
+    }
+
+    .sliderRow__menu {
+
     }
 }
 
 
+.table {
+    width: 100%;
+    $table_margin : 10px;
+    font-size: 1.15rem;
+    margin-top: 25px;
 
+    &__cont {
+        margin-top: 65px;
+    }
+
+    tr {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    tr + tr {
+        margin-top: $table_margin;
+    }
+
+    tr:first-child {
+        background-color: #4e8870;
+        color: white;
+        font-weight: bold;
+
+        td {
+            margin: 0;
+            background-color: #4e8870;
+
+        }
+
+        td:first-child {
+            text-align: center;
+        }
+    }
+
+    td {
+        text-align: center;
+        padding: 10px;
+        background: #f4f8fb;
+    }
+
+    td:first-child {
+        text-align: left;
+    }
+
+    td + td {
+        margin: $table_margin;
+    }
+}
+
+.table__cont .sliderRow,
+.faq .sliderRow {
+    min-height: auto;
+}
+
+.table__cont .sliderRow__slide  {
+    padding: 0;
+}
 

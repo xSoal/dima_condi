@@ -40,6 +40,20 @@
                         to: {
                             name: 'files'
                         }
+                    },
+                    {
+                        icon: "unordered-list",
+                        text: 'фичи',
+                        to: {
+                            name: 'features'
+                        }
+                    },
+                    {
+                        icon: "unordered-list",
+                        text: 'users',
+                        to: {
+                            name: 'users'
+                        }
                     }
                 ]
             }

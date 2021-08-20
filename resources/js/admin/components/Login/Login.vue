@@ -1,11 +1,10 @@
 <template>
     <div class="login form">
         <a-form-model :model="formData" @submit="handleSubmit" @submit.native.prevent>
-
             {{ formData.res }}
             <br>
             <a-form-model-item>
-                <a-input v-model="formData.email" placeholder="Email" type="text">
+                <a-input v-model="formData.name" placeholder="User name" type="text">
                     <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
                 </a-input>
             </a-form-model-item>
@@ -18,7 +17,7 @@
                 <a-button
                     type="primary"
                     html-type="submit"
-                    :disabled=" formData.email === '' || formData.password === '' "
+                    :disabled=" formData.name === '' || formData.password === '' "
                 >
                     Log in
                 </a-button>
@@ -33,7 +32,7 @@
         data() {
             return {
                 formData: {
-                    email: '',
+                    name: '',
                     password: '',
                     res: ''
                 },
@@ -41,8 +40,8 @@
         },
         methods: {
             async handleSubmit(e) {
-                const userData = await this.$API.tryAuth(this.formData.email, this.formData.password);
-                if(userData.email){
+                const userData = await this.$API.tryAuth(this.formData.name, this.formData.password);
+                if(userData.name){
                     await this.$router.push({ name: 'dashboard' });
                     // window.location.href = '/admin';
                 } else {

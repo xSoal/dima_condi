@@ -1,5 +1,6 @@
 <template>
     <div class="serviceBlockCont">
+
         <div v-if="serviceBlocksData">
 
             <div

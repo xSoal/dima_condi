@@ -14,6 +14,7 @@ import variables from "./variables";
 import wysiwyg from "vue-wysiwyg";
 
 
+
 Vue.use(wysiwyg, {
     locale: 'ru'
 }); // config is optional. more below

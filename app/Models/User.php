@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use DateTimeInterface;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,6 +31,7 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
         'remember_token',
+        'email_verified_at'
     ];
 
     /**
@@ -63,7 +65,10 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 
 
 

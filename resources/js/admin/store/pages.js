@@ -81,8 +81,16 @@ export default {
             ctx.dispatch('getServicesOfCategory');
             ctx.dispatch('selectService', null);
         },
-        selectService(ctx, serviceId) {
+        selectService(ctx, serviceId, third) {
             ctx.commit('selectService', serviceId);
+
+            //const selectedService = ctx.state.services.find(el => el.id === serviceId);
+
+            // if(selectedService?.serviceBlocks){
+            //     ctx.dispatch('getServiceBlocks', serviceId, {root: true});
+            //     console.log('qwe')
+            // }
+            // ctx.dispatch('/features/...', null, {root: true});
         },
         async updateServiceSliderAPI(ctx, {sliderData}) {
             const response  = await API.put(`/slider/${sliderData.id}`, sliderData);
@@ -178,7 +186,7 @@ export default {
         },
         selectService(state, serviceId) {
             state.selectedServiceId = serviceId;
-            state.selectedService = state.services.find(el => el.id === serviceId) ?? null;
+            state.selectedService   = state.services.find(el => el.id === serviceId) ?? null;
 
         },
 

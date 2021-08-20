@@ -127,6 +127,8 @@
 
 body {
   font-size: 16px;
+  color: #313c58;
+  font-family: "Montserrat", sans-serif;
 }
 
 .ps__thumb-y {
@@ -135,6 +137,17 @@ body {
 
 .center {
   text-align: center;
+}
+
+.over {
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+.header__text {
+  font-size: 2.7rem;
+  line-height: 2.7rem;
+  font-weight: bold;
 }
 
 .modalOverflow {
@@ -482,6 +495,41 @@ body {
 
 .slider .slide__bottomComment {
   margin-left: 115px;
+}
+
+.modalOverflow {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #313c58;
+  display: none;
+}
+
+.modalOverflow.show {
+  display: block;
+}
+
+.modal__inner {
+  padding: 25px;
+  text-align: center;
+}
+
+.modal input {
+  padding: 5px 20px;
+  border-radius: 5px;
+  border: 2px solid #4e8870;
+  font-size: 1.25rem;
+}
+
+.modal__buttonCont {
+  margin-top: 25px;
+}
+
+body.non-scroll {
+  overflow: hidden;
 }
 
 @-webkit-keyframes slidein {

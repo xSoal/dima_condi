@@ -7,6 +7,11 @@ use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,10 +50,13 @@ Route::group([
         return response()->json($service_categories);
     });
 
+
 });
 
 
-
+Route::post('/images', [\App\Http\Controllers\AttachmentController::class, 'store']);
+Route::get('/images', [\App\Http\Controllers\AttachmentController::class, 'file_list']);
+Route::delete('/images/{file_id}', [\App\Http\Controllers\AttachmentController::class, 'delete']);
 
 
 Route::get('/service', [\App\Http\Controllers\Admin\ServiceController::class, 'index']);
@@ -57,9 +65,7 @@ Route::delete('/service/{id}', [\App\Http\Controllers\Admin\ServiceController::c
 Route::put('/service/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'update']);
 
 
-Route::post('/images', [\App\Http\Controllers\AttachmentController::class, 'store']);
-Route::get('/images', [\App\Http\Controllers\AttachmentController::class, 'file_list']);
-Route::delete('/images/{file_id}', [\App\Http\Controllers\AttachmentController::class, 'delete']);
+
 
 
 Route::resource('/slider', SliderController::class);
@@ -84,7 +90,7 @@ Route::post('/service_block_block', [ServiceBlock__BlockController::class, 'save
 
 Route::get('/service_faq/{service_id}', [ServiceFaqUnswerController::class, 'index']);
 Route::delete('/service_faq/{service_id}', [ServiceFaqUnswerController::class, 'delete']);
-
+Route::post('/service_faq/{faq_id}', [ServiceFaqUnswerController::class, 'save']);
 Route::put('/service_faq/{faq_id}', [ServiceFaqUnswerController::class, 'create']);
 
 
@@ -97,3 +103,11 @@ Route::post('/service_table/', [\App\Http\Controllers\ServiceTableController::cl
 
 
 
+Route::get('/features', [\App\Http\Controllers\Admin\FeaturesController::class, 'index']);
+Route::post('/features', [\App\Http\Controllers\Admin\FeaturesController::class, 'save']);
+Route::delete('/features/{service_id}', [\App\Http\Controllers\Admin\FeaturesController::class, 'delete']);
+Route::put('/features', [\App\Http\Controllers\Admin\FeaturesController::class, 'create']);
+
+
+Route::get('/users',   [\App\Http\Controllers\Admin\UserController::class, 'index']);
+Route::put('/users', [\App\Http\Controllers\Admin\UserController::class, 'add']);

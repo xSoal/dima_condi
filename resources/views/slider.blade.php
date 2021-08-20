@@ -1,11 +1,14 @@
+
+@if($service->slider && $service->slider->is_active === 1)
 <?php
 
-use App\Http\Controllers\Controller as Controller;
+    // dd($service->slider);
 
 //echo $slider_data;
 
 
 $slider_data = $service->slider;
+
 
 $slider_json_data = json_decode($slider_data->json_data);
 $images_data = [];
@@ -79,4 +82,4 @@ foreach ($slider_json_data as $data) {
 
 
 </div>
-
+@endif

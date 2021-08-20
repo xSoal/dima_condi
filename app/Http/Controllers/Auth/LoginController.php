@@ -21,6 +21,16 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+
+
+    // this method is select field to auth from user fields
+    public function username()
+    {
+        return 'name'; //or return the field which you want to use.
+    }
+
+
+
     /**
      * Where to redirect users after login.
      *
@@ -33,6 +43,10 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

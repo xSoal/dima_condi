@@ -51,6 +51,7 @@
                 selectedService: state => state.pages.services.find(el => +el.id === state.pages.selectedServiceId),
             }),
 
+
             defaultSliderData() {
                 return {
                     title: this.selectedService.category_name,
@@ -164,7 +165,7 @@
 
             },
             selectedService(value) {
-
+                console.log('new service selected')
             }
         }
     }

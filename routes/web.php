@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/contact', [\App\Http\Controllers\ServicePageController::class, 'contact']);
 Route::get('/', [\App\Http\Controllers\ServicePageController::class, 'index'])->name('home_page');
-Route::get('/{service_slug}', [\App\Http\Controllers\ServicePageController::class, 'index'])->name('service_page');
 
 //Route::get('/admin', [\App\Http\Controllers\Admin\AdminPageController::class, 'index'])->name('admin_page');
 
@@ -33,6 +32,12 @@ Route::get('/admin/{any}', function (){
 })->where('any', '.{0,}');
 
 
+Route::get('/{service_slug}', [\App\Http\Controllers\ServicePageController::class, 'index'])->name('service_page');
+
+
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

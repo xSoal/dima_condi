@@ -34,14 +34,29 @@
 
             <FormInput
                 placeholder="Цена"
-                type="number"
-                iconType="plus"
-                v-model="value.header_text"
+                type="text"
+                iconType="question"
+                v-model="value.title"
             />
 
             <TextArea__Editor
                 v-model="value.text"
             />
+
+
+            <br>
+
+            <a-form-model-item>
+                <a-button
+                    type="primary"
+                    html-type="submit"
+                    :disabled=" false "
+                    @click="saveFAQ(value)"
+                >
+                    Сохранить
+                    <a-icon type="save"/>
+                </a-button>
+            </a-form-model-item>
 
 
         </div>
@@ -56,6 +71,7 @@
     import FilePicker from "../../../../../../reusable_components/FilePicker/FilePicker";
     import FormInput from "../../../../../../reusable_components/FormInput";
     import TextArea__Editor from "../../../../../../reusable_components/TextArea__Editor";
+    import {mapActions} from "vuex";
 
     export default {
         name: "ServiceFAQ__Form__El",
@@ -76,6 +92,7 @@
             // update(){
             //     this.$emit('input', this.localData)
             // },
+            ...mapActions(['saveFAQ']),
             deleteOk(){
 
                 this.$emit('delete', this.value.id);

@@ -35,10 +35,8 @@ export default {
             ctx.dispatch('getFAQ');
         },
 
-
-
-        async saveFAQ(ctx){
-
+        async saveFAQ(ctx, data){
+            const res = await API.post(`/service_faq/${data.id}`, data)
         }
 
     },

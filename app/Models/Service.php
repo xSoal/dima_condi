@@ -25,7 +25,14 @@ class Service extends Model
 
     protected $with = [
         "slider",
+        "serviceBlock",
+        "ServiceFaqUnswers",
+        "serviceTables"
     ];
+
+    public function slider(){
+        return $this->hasOne(Slider::class);
+    }
 
 
     protected static function boot()
@@ -43,7 +50,6 @@ class Service extends Model
     }
 
 
-
     public function serviceCategories(){
         return $this->belongsTo(ServiceCategory::class);
     }
@@ -54,15 +60,13 @@ class Service extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function slider(){
-        return $this->hasOne(Slider::class);
-    }
+
 
     public function serviceBlock(){
         return $this->hasOne(ServiceBlock::class);
     }
 
-    public function ServiceFaqUnswer(){
+    public function ServiceFaqUnswers(){
         return $this->hasMany(ServiceFaqUnswer::class);
     }
 

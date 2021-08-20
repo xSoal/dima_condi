@@ -8,7 +8,8 @@ function showSuccess( message = 'Ок' ) {
 }
 
 
-function showError( message = 'Ошибка' ) {
+function showError( message ) {
+    if(!message || message === '') message = 'Ошибка';
     return notification['error']({
         message: message.toString()
     });

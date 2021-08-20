@@ -1,5 +1,11 @@
 <header class="header">
 
+    @php
+        $header_data =  App\Http\Controllers\PageController::getHeader();
+    @endphp
+
+
+
     <div class="header__row header__row--first">
         <div class="contactHeader">
             <div class="contactHeader__icon">
@@ -29,7 +35,9 @@
             <div class="headerNav__left">
 
                 <div class="headerNav__logo">
-                    <img src="{{ asset('images/logo_new.png')  }}" alt="Logotype">
+                    <a href="/">
+                        <img src="{{ asset('images/logo_new.png')  }}" alt="Logotype">
+                    </a>
                 </div>
 
                 <nav class="">
@@ -43,36 +51,18 @@
                         <li class="menu__first">
                             <span>Услуги</span>
                             <ul class="menu__firstUl menu__firstUl--withSub">
+                            @foreach($header_data as $serviceCategory)
                                 <li>
-                                    <span>Сервис бытовых кондиционеров</span>
+                                    <span>{{$serviceCategory->category_name}}</span>
                                     <ul>
-                                        <li><a href="#">Чистка кондиционеров</a></li>
-                                        <li><a href="#">Ремонт кондиционеров</a></li>
-                                        <li><a href="#">Установка кондиционеров</a></li>
-                                        <li><a href="#">Заправка кондиционеров</a></li>
-                                        <li><a href="#">Профилактика кондиционеров</a></li>
-                                        <li><a href="#">Диагностика кондиционеров</a></li>
+                                        @foreach($serviceCategory->services as $service)
+                                            <li><a href="/{{$service->slug}}">{{$service->title}}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li>
-                                    <span>Сервис систем кондиционирования</span>
-                                    <ul>
-                                        <li><a href="#">Услуги по системам кондиционирования</a></li>
-                                        <li><a href="#">Услуги по чиллерам</a></li>
-                                        <li><a href="#">Услуги по фанкойлам</a></li>
-                                        <li><a href="#">Услуги по VRF-VRV системам</a></li>
-                                        <li><a href="#">Услуги по прецизионным кондиционерам</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <span>Сервис вентиляционных систем</span>
-                                    <ul>
-                                        <li><a href="#">Услуги по вентиляции</a></li>
-                                        <li><a href="#">Монтаж вентиляции</a></li>
-                                        <li><a href="#">Услуги по приточно вытяжным установкам</a></li>
-                                    </ul>
-                                </li>
+                            @endforeach
                             </ul>
+
                         </li>
                         <li class="menu__first">
                             <span>Стоимость</span>
@@ -86,7 +76,7 @@
             </div>
             <div class="headerNav__right">
                 <div>
-                    <button class="orderButton modalTrigger" data-modal="getCall">
+                    <button class="orderButton modalTrigger" data-modal="modal-getCall">
                         Заказать звонок
                     </button>
                 </div>

@@ -8,6 +8,8 @@ import Pages from "./components/Dashboard/Pages/Pages";
 import Files from "./components/Dashboard/Files/Files";
 import Service__Categories from "./components/Dashboard/Pages/Service__Categories";
 import Services from "./components/Dashboard/Pages/Services";
+import Features from "./components/Dashboard/Features/Features";
+import Users from "./components/Dashboard/Users/Users";
 
 Vue.use(VueRouter);
 
@@ -66,6 +68,26 @@ const routes = [
             needAuth: true,
             dashboardHeaderText: 'Загрузчик файлов'
         },
+    },
+    {
+        path: '/admin/features',
+        component: Features,
+        name: 'features',
+        meta: {
+            layout: "dashboard",
+            needAuth: true,
+            dashboardHeaderText: 'Наши приемущества'
+        },
+    },
+    {
+        path: '/admin/users',
+        component: Users,
+        name: 'users',
+        meta: {
+            layout: "dashboard",
+            needAuth: true,
+            dashboardHeaderText: "Пользователт админки"
+        }
     },
     {
         path: '/admin/login',

@@ -8,6 +8,8 @@ import pages__constructor from "./pages__constructor";
 import serviceBlocks from "./serviceBlocks";
 import serviceFAQ from './serviceFAQ';
 import serviceTables from './serviceTables';
+import features from "./features";
+import users from './users';
 
 Vue.prototype.$API = API;
 
@@ -27,7 +29,9 @@ const store = new Vuex.Store({
         pages__constructor,
         serviceBlocks,
         serviceFAQ,
-        serviceTables
+        serviceTables,
+        features,
+        users
     }
 });
 

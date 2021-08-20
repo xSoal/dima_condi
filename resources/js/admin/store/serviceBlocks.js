@@ -9,11 +9,17 @@ export default {
     },
     actions: {
         async getServiceBlocks(ctx, serviceId){
-            const res = await API.get(`/service_block_by_service/${serviceId}`);
-            ctx.commit('putServiceBlocks', res.data ?? null);
+            const serviceBlocks = ctx.rootState.pages.selectedService.service_block;
+
+            // if(isIssetBlocksInService){
+            //     const res = await API.get(`/service_block_by_service/${serviceId}`);
+            //     ctx.commit('putServiceBlocks', res.data ?? null);
+            // } else {
+            //     ctx.commit('putServiceBlocks', null);
+            // }
+
+            ctx.commit('putServiceBlocks', serviceBlocks ?? null);
         },
-
-
 
         async setServiceBlocksStatus(ctx, status){
             const res = await API.post(`/service_block_set_active_status/${ctx.state.serviceBlocksData.id}`, {

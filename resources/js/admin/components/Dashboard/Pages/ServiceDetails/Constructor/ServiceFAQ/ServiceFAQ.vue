@@ -1,8 +1,6 @@
 <template>
     <div class="serviceBlockCont">
 
-
-
         <div v-if="serviceFAQData">
             <ServiceFAQ__Form__El
                 v-for="(s) in serviceFAQData"
@@ -30,17 +28,6 @@
         </div>
 
 
-        <a-form-model-item>
-            <a-button
-                type="primary"
-                html-type="submit"
-                :disabled=" false "
-                @click="addFAQ"
-            >
-                Сохранить
-                <a-icon type="save"/>
-            </a-button>
-        </a-form-model-item>
 
 
     </div>

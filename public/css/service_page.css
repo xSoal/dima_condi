@@ -6,6 +6,7 @@ body {
 .promotes__blockCont {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .promotes__blockCont .promoteBlock {
@@ -21,19 +22,20 @@ body {
 }
 
 .promoteBlock__header {
-  padding: 25px;
+  padding: 25px 35px 20px 20px;
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+  overflow: hidden;
 }
 
 .promoteBlock__text {
-  padding: 25px;
+  padding: 25px 35px 20px 20px;
   border-top: 1px solid #4e8870;
   border-bottom: 1px solid #4e8870;
 }
 
 .promoteBlock__footer {
-  padding: 25px;
+  padding: 25px 35px 20px 20px;
 }
 
 .promoteBlock__price {
@@ -139,10 +141,86 @@ body {
   padding: 25px 2.5%;
 }
 
+.article article {
+  margin-top: 35px;
+}
+
 .article__header {
   font-size: 8rem;
   color: rgba(233, 233, 233, 0.47);
   font-weight: 700;
+  line-height: 8rem;
+}
+
+.faq {
+  margin-top: 65px;
+}
+
+.faqCont {
+  margin-top: 25px;
+  background-image: none;
+  background-color: transparent;
+}
+
+.faq .sliderRow__menu {
+  flex: 0;
+}
+
+.table {
+  width: 100%;
+  font-size: 1.15rem;
+  margin-top: 25px;
+}
+
+.table__cont {
+  margin-top: 65px;
+}
+
+.table tr {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.table tr + tr {
+  margin-top: 10px;
+}
+
+.table tr:first-child {
+  background-color: #4e8870;
+  color: white;
+  font-weight: bold;
+}
+
+.table tr:first-child td {
+  margin: 0;
+  background-color: #4e8870;
+}
+
+.table tr:first-child td:first-child {
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+  padding: 10px;
+  background: #f4f8fb;
+}
+
+.table td:first-child {
+  text-align: left;
+}
+
+.table td + td {
+  margin: 10px;
+}
+
+.table__cont .sliderRow,
+.faq .sliderRow {
+  min-height: auto;
+}
+
+.table__cont .sliderRow__slide {
+  padding: 0;
 }
 
 

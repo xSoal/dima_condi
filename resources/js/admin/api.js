@@ -48,10 +48,10 @@ class API_CLASS {
         }
     }
 
-    async tryAuth(email, password) {
+    async tryAuth(name, password) {
         try {
             const res = await axios.post(`${this.api_url}/auth/login`, {
-                email, password
+                name, password
             });
             const data = res.data;
 
@@ -77,7 +77,7 @@ class API_CLASS {
 
     getToken(){
         const jwt = window.localStorage.getItem('JWT');
-        return  JSON.parse(jwt).access_token;
+        return  JSON.parse(jwt)?.access_token ?? null;
     }
 
     async request( url = '', type = 'get', data = {}, config = {} ){
@@ -108,9 +108,7 @@ class API_CLASS {
             };
 
         } catch(err){
-
-            showError();
-
+            showError(err?.response?.data?.message || '');
             return {
                 ...err,
                 error: true

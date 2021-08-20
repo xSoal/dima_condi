@@ -10,7 +10,7 @@ class ServiceFaqUnswerController extends Controller
 {
     public function index(Request $request, $service_id){
 
-        $unswers = ServiceFaqUnswer::where('service_id', '9')->get();
+        $unswers = ServiceFaqUnswer::where('service_id', $service_id)->get();
 
         return response()->json($unswers, 200);
 
@@ -38,6 +38,21 @@ class ServiceFaqUnswerController extends Controller
 
     }
 
+    public function save(Request $request, $id){
+        $request->validate([
+            "title" => "required|string",
+            "text" => "required|string"
+        ]);
+
+        $faq = ServiceFaqUnswer::findOrFail($id);
+
+        $faq->title = $request->input('title');
+        $faq->text = $request->input('text');
+        $faq->save();
+
+
+        return response()->json([], 200);
+    }
 
 
     public function delete(Request $request, $faq_id){
